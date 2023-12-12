@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, form, pre {
+            text-align: center;
+            color: #333; /* Cor do texto */
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        select {
+            padding: 3px;
+            font-size: 14px;
+            margin-top: 10px;
+            color: #333333; /* Cor do texto no select */
+            border: 1px solid #ccc; /* Cor da borda do select */
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+            background-color: #3d73a8; /* Cor de fundo do botão (azul) */
+            color: #ffffff; /* Cor do texto no botão (branco) */
+            border: 1px solid #3d73a8; /* Cor da borda do botão (azul) */
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        pre {
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9; /* Cor de fundo da área de pré-visualização */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calendário</h1>
+    
+        <form id="calendarioForm" method="get">
+            <label for="mes">Escolha o ano:</label>
+            <select name="ano" id="ano">
+                {% for year in range(1900, 2028) %}
+                    <option value="{{ year }}" {% if ano == year %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+            <label for="mes">Escolha o mês:</label>
+            <select name="mes" id="mes">
+                <!-- Opções para os meses aqui -->
+                <option value="janeiro" {% if mes == "Janeiro" %}selected{% endif %}>Janeiro</option>
+                <option value="fevereiro" {% if mes == "Fevereiro" %}selected{% endif %}>Fevereiro</option>
+                <option value="marco" {% if mes == "Março" %}selected{% endif %}>Março</option>
+                <option value="abril" {% if mes == "Abril" %}selected{% endif %}>Abril</option>
+                <option value="maio" {% if mes == "Maio" %}selected{% endif %}>Maio</option>
+                <option value="junho" {% if mes == "Junho" %}selected{% endif %}>Junho</option>
+                <option value="julho" {% if mes == "Julho" %}selected{% endif %}>Julho</option>
+                <option value="agosto" {% if mes == "Agosto" %}selected{% endif %}>Agosto</option>
+                <option value="setembro" {% if mes == "Setembro" %}selected{% endif %}>Setembro</option>
+                <option value="outubro" {% if mes == "Outubro" %}selected{% endif %}>Outubro</option>
+                <option value="novembro" {% if mes == "Novembro" %}selected{% endif %}>Novembro</option>
+                <option value="dezembro" {% if mes == "Dezembro" %}selected{% endif %}>Dezembro</option>
+            </select>
+            <button type="button" onclick="submitForm()">Mostrar Calendário</button>
+        </form>
+
+        <script>
+            function submitForm() {
+                var selectedMonth = document.getElementById("mes").value;
+                var selectedYear = document.getElementById("ano").value;
+                window.location.href = "/calendario/" + selectedYear + "/" + selectedMonth;
+            }
+        </script>
+
+        {% if mes and calendario %}
+            <h2 style="color: #007bff; text-align: center;">Calendário de {{ mes }}</h2>
+            <pre>{{ calendario }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
