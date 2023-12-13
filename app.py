@@ -37,9 +37,9 @@ def mostrar_calendario(ano, mes):
         nome_mes = mes.capitalize()
 
         # Renderiza o template HTML com o calendário, o nome do mês e o ano
-        return render_template('calendario.html', ano=ano, mes=nome_mes, calendario=cal)
+        return render_template('index.html', ano=ano, mes=nome_mes, calendario=cal)
 
-    return render_template('calendario.html', ano=None, mes=None, calendario=None)
+    return render_template('index.html', ano=None, mes=None, calendario=None)
 
 if __name__ == '__main__':
     app.run(debug=True)
