@@ -71,7 +71,7 @@
         <form id="calendarioForm" method="get">
             <label for="mes">Escolha o ano:</label>
             <select name="ano" id="ano">
-                {% for year in range(1900, 2028) %}
+                {% for year in range(1950, 2050) %}
                     <option value="{{ year }}" {% if ano == year %}selected{% endif %}>{{ year }}</option>
                 {% endfor %}
             </select>
@@ -103,7 +103,7 @@
         </script>
 
         {% if mes and calendario %}
-            <h2 style="color: #007bff; text-align: center;">Calendário de {{ mes }}</h2>
+            <h2 style="color: #007bff; text-align: center;">{{ mes }} {{ ano }}</h2>
             <pre>{{ calendario }}</pre>
         {% endif %}
     </div>
