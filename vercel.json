@@ -1,8 +1,2 @@
-{
-    "functions": {
-      "app_python/**/*.py": {
-        "runtime": "python3.12.0"
-      }
-    }
-  }
+{}
   
