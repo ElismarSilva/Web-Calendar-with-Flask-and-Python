@@ -1,6 +1,6 @@
 {
     "functions": {
-      "api/**/*.py": {
+      "app_python/**/*.py": {
         "runtime": "python3.8"
       }
     }
