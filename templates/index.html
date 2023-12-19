@@ -62,6 +62,11 @@
             border-radius: 4px;
             background-color: #f9f9f9; /* Cor de fundo da área de pré-visualização */
         }
+        footer{
+            text-align: center;
+            margin-top: 20px;
+            font-size: 10px;
+        }
     </style>
 </head>
 <body>
@@ -69,12 +74,13 @@
         <h1>Calendário</h1>
     
         <form id="calendarioForm" method="get">
-            <label for="mes">Escolha o ano:</label>
-            <select name="ano" id="ano">
-                {% for year in range(1950, 2050) %}
-                    <option value="{{ year }}" {% if ano == year %}selected{% endif %}>{{ year }}</option>
-                {% endfor %}
-            </select>
+            <label for="ano">Escolha o ano:</label>
+<select name="ano" id="ano">
+    {% for year in range(1950, 2050) %}
+        <option value="{{ year }}" {% if ano == year %}selected{% endif %}>{{ year }}</option>
+    {% endfor %}
+</select>
+
             <label for="mes">Escolha o mês:</label>
             <select name="mes" id="mes">
                 <!-- Opções para os meses aqui -->
@@ -106,6 +112,13 @@
             <h2 style="color: #007bff; text-align: center;">{{ mes }} {{ ano }}</h2>
             <pre>{{ calendario }}</pre>
         {% endif %}
+        <footer>
+            <p>&copy; Elismar Silva - <span id="ano_"> </span> Todos os direitos reservados. </span></p>
+            <script>
+              document.getElementById("ano_").textContent = new Date().getFullYear();
+            </script>
+        </footer>
+        
     </div>
 </body>
 </html>

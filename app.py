@@ -42,4 +42,4 @@ def mostrar_calendario(ano, mes):
     return render_template('index.html', ano=None, mes=None, calendario=None)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
